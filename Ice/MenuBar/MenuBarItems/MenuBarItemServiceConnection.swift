@@ -100,7 +100,7 @@ extension MenuBarItemService {
                     logger.warning("Session was cancelled with error \(error.localizedDescription)")
                     self.session = nil
                 }
-                session.setPeerRequirement(.isFromSameTeam())
+                session.setPeerRequirement(.hasEntitlement("com.maier.ice.local-xpc"))
                 session.setTargetQueue(queue)
                 try session.activate()
                 self.session = session
