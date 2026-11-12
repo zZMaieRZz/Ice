@@ -1,0 +1,38 @@
+name: Build macOS App
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Build without code signing
+        run: >-
+          xcodebuild
+          -project Ice.xcodeproj
+          -scheme Ice
+          -configuration "${{ matrix.configuration }}"
+          -destination 'generic/platform=macOS'
+          -derivedDataPath build
+          -onlyUsePackageVersionsFromResolvedFile
+          CODE_SIGNING_ALLOWED=NO
+          build

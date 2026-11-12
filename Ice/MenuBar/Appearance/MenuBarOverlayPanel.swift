@@ -163,6 +163,7 @@ final class MenuBarOverlayPanel: NSPanel {
                     }
                     self.insertUpdateFlag(.applicationMenuFrame)
                     hasDoneInitialUpdate = true
+                    try await Task.sleep(for: .milliseconds(50))
                 }
             }
             Task {
