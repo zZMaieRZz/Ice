@@ -460,6 +460,22 @@ extension NSScreen {
     }
 }
 
+// MARK: - NSWindow
+
+extension NSWindow {
+    /// The window's Core Graphics window identifier.
+    ///
+    /// Returns `nil` for windows that are not currently on screen (their
+    /// window number is zero or negative) and for values that cannot be
+    /// represented as a `CGWindowID`.
+    var cgWindowID: CGWindowID? {
+        guard windowNumber > 0 else {
+            return nil
+        }
+        return CGWindowID(exactly: windowNumber)
+    }
+}
+
 // MARK: - NSStatusItem
 
 extension NSStatusItem {
