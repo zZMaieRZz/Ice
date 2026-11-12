@@ -1550,6 +1550,16 @@
           }
         }
       }
+    },
+    "Launch at login": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запускать при входе"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
