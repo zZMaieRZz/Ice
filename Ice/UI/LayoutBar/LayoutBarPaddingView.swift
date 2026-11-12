@@ -135,8 +135,7 @@ final class LayoutBarPaddingView: NSView {
                 appState.itemManager.removeTempShownItemFromCache(with: item.info)
             } catch {
                 Logger.layoutBar.error("Error moving menu bar item: \(error)")
-                let alert = NSAlert(error: error)
-                alert.runModal()
+                NSSound.beep()
             }
         }
     }

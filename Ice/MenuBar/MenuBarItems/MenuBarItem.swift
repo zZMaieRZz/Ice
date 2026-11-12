@@ -35,11 +35,37 @@ struct MenuBarItem {
         window.isOnScreen
     }
 
+    /// Titles of Control Center items that cannot be moved with synthetic events.
+    private static let immovableControlCenterTitles: Set<String> = [
+        "AccessibilityShortcuts",
+        "AudioVideoModule",
+        "Battery",
+        "BentoBox",
+        "BentoBox-0",
+        "Bluetooth",
+        "Clock",
+        "FaceTime",
+        "FocusModes",
+        "KeyboardBrightness",
+        "MusicRecognition",
+        "NowPlaying",
+        "ScreenMirroring",
+        "Siri",
+        "Sound",
+        "Spotlight",
+        "StageManager",
+        "TimeMachine.TMMenuExtraHost",
+        "TimeMachineMenuExtra.TMMenuExtraHost",
+        "UserSwitcher",
+        "WiFi",
+    ]
+
     /// A Boolean value that indicates whether the item can be moved.
     var isMovable: Bool {
-        // On macOS 26 Control Center hosts these items and ignores synthetic
-        // move events, so attempting to move one only produces a timeout.
-        if info.namespace == .controlCenter {
+        // macOS 26 hosts most status items in Control Center. System items
+        // ignore synthetic move events, while items that belong to other apps
+        // can still be moved. Block only the known system items.
+        if info.namespace == .controlCenter, Self.immovableControlCenterTitles.contains(info.title) {
             return false
         }
         let immovableItems = Set(MenuBarItemInfo.immovableItems)
