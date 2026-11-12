@@ -49,7 +49,7 @@ final class Listener {
     private func uncheckedActivateWithLocalEntitlement() throws {
         listener = try XPCListener(
             service: name,
-            requirement: .hasEntitlement("com.maier.ice.local-xpc")
+            requirement: .hasEntitlement("com.apple.security.get-task-allow")
         ) { [weak self] request in
             request.accept { message in
                 self?.handleMessage(message)

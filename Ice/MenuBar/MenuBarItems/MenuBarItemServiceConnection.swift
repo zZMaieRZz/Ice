@@ -100,7 +100,7 @@ extension MenuBarItemService {
                     logger.warning("Session was cancelled with error \(error.localizedDescription)")
                     self.session = nil
                 }
-                session.setPeerRequirement(.hasEntitlement("com.maier.ice.local-xpc"))
+                session.setPeerRequirement(.hasEntitlement("com.apple.security.get-task-allow"))
                 session.setTargetQueue(queue)
                 try session.activate()
                 self.session = session

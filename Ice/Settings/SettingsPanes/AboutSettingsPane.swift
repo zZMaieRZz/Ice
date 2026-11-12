@@ -7,7 +7,6 @@ import SwiftUI
 
 struct AboutSettingsPane: View {
     @EnvironmentObject var appState: AppState
-    @ObservedObject var updatesManager: UpdatesManager
     @Environment(\.openURL) private var openURL
 
     private var acknowledgementsURL: URL {
@@ -29,13 +28,6 @@ struct AboutSettingsPane: View {
         URL(string: "https://icemenubar.app/Donate")!
     }
 
-    private var lastUpdateCheckString: String {
-        if let date = updatesManager.lastUpdateCheckDate {
-            date.formatted(date: .abbreviated, time: .standard)
-        } else {
-            "Never"
-        }
-    }
 
     var body: some View {
         if #available(macOS 26.0, *) {
@@ -62,9 +54,6 @@ struct AboutSettingsPane: View {
 
             Spacer(minLength: 0)
                 .frame(maxHeight: 20)
-
-            updatesSection
-                .layoutPriority(1)
         }
         .padding(.top, 5)
         .padding([.horizontal, .bottom], 30)
@@ -99,46 +88,6 @@ struct AboutSettingsPane: View {
                 }
                 .fontWeight(.medium)
             }
-        }
-    }
-
-    @ViewBuilder
-    private var updatesSection: some View {
-        IceSection(options: .hasDividers) {
-            automaticallyCheckForUpdates
-            automaticallyDownloadUpdates
-            if updatesManager.canCheckForUpdates {
-                checkForUpdates
-            }
-        }
-        .frame(maxWidth: 600)
-    }
-
-    @ViewBuilder
-    private var automaticallyCheckForUpdates: some View {
-        Toggle(
-            "Automatically check for updates",
-            isOn: $updatesManager.automaticallyChecksForUpdates
-        )
-    }
-
-    @ViewBuilder
-    private var automaticallyDownloadUpdates: some View {
-        Toggle(
-            "Automatically download updates",
-            isOn: $updatesManager.automaticallyDownloadsUpdates
-        )
-    }
-
-    @ViewBuilder
-    private var checkForUpdates: some View {
-        HStack {
-            Button("Check for Updates") {
-                updatesManager.checkForUpdates()
-            }
-            Spacer()
-            Text("Last checked: \(lastUpdateCheckString)")
-                .font(.caption)
         }
     }
 
