@@ -312,7 +312,7 @@ extension MenuBarItemManager {
 
     /// Caches the current menu bar items if needed, ensuring that the control
     /// items are in the correct order.
-    func cacheItemsIfNeeded() async {
+    func cacheItemsIfNeeded(attempt: Int = 0) async {
         do {
             try await waitForItemsToStopMoving(timeout: .seconds(1))
         } catch is TaskTimeoutError {
@@ -326,11 +326,13 @@ extension MenuBarItemManager {
         }
 
         let itemWindowIDs = Bridging.getWindowList(option: [.menuBarItems, .activeSpace])
-        if cachedItemWindowIDs == itemWindowIDs {
-            logSkippingCache(reason: "item windows have not changed")
-            return
-        } else {
-            cachedItemWindowIDs = itemWindowIDs
+        if attempt == 0 {
+            if cachedItemWindowIDs == itemWindowIDs {
+                logSkippingCache(reason: "item windows have not changed")
+                return
+            } else {
+                cachedItemWindowIDs = itemWindowIDs
+            }
         }
 
         var items = MenuBarItem.getMenuBarItems(onScreenOnly: false, activeSpaceOnly: true)
@@ -339,9 +341,19 @@ extension MenuBarItemManager {
         let alwaysHiddenControlItem = items.firstIndex(matching: .alwaysHiddenControlItem).map { items.remove(at: $0) }
 
         guard let hiddenControlItem else {
-            Logger.itemManager.warning("Missing control item for hidden section")
-            Logger.itemManager.debug("Clearing menu bar item cache")
-            itemCache.clear()
+            // The control item's status item window may not be ready during
+            // the first cache pass after launch. Retry briefly before giving up.
+            if attempt < 3 {
+                Logger.itemManager.debug("Hidden control item is not available yet; retrying")
+                Task {
+                    try? await Task.sleep(for: .milliseconds(250))
+                    await self.cacheItemsIfNeeded(attempt: attempt + 1)
+                }
+            } else {
+                Logger.itemManager.warning("Missing control item for hidden section")
+                Logger.itemManager.debug("Clearing menu bar item cache")
+                itemCache.clear()
+            }
             return
         }
 

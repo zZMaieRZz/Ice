@@ -1854,6 +1854,16 @@
           }
         }
       }
+    },
+    "%@ cannot be moved": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ нельзя переместить"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

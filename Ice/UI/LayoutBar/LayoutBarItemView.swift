@@ -76,7 +76,11 @@ final class LayoutBarItemView: NSView {
         super.init(frame: CGRect(origin: .zero, size: item.frame.size))
         unregisterDraggedTypes()
 
-        self.toolTip = item.displayName
+        self.toolTip = if item.isMovable {
+            item.displayName
+        } else {
+            String(localized: "\(item.displayName) cannot be moved")
+        }
         self.isEnabled = item.isMovable
         setAccessibilityEnabled(item.isMovable)
         setAccessibilityLabel(item.displayName)
@@ -158,8 +162,9 @@ final class LayoutBarItemView: NSView {
         super.mouseDragged(with: event)
 
         guard isEnabled else {
-            let alert = provideAlertForDisabledItem()
-            alert.runModal()
+            // Don't show a modal alert for every drag event; the item's
+            // tooltip explains why it can't be moved.
+            NSSound.beep()
             return
         }
 

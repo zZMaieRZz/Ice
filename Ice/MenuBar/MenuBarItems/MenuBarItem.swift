@@ -39,7 +39,7 @@ struct MenuBarItem {
     var isMovable: Bool {
         // On macOS 26 Control Center hosts these items and ignores synthetic
         // move events, so attempting to move one only produces a timeout.
-        if info.namespace == .controlCenter, info.title == "Item-0" {
+        if info.namespace == .controlCenter {
             return false
         }
         let immovableItems = Set(MenuBarItemInfo.immovableItems)
