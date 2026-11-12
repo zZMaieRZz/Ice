@@ -1824,6 +1824,36 @@
           }
         }
       }
+    },
+    "Language": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык"
+          }
+        }
+      }
+    },
+    "System": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Системный"
+          }
+        }
+      }
+    },
+    "Could not restart Ice.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось перезапустить Ice."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
