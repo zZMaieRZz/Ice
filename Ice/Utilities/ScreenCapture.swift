@@ -12,7 +12,7 @@ enum ScreenCapture {
     static func checkPermissions() -> Bool {
         for item in MenuBarItem.getMenuBarItems(onScreenOnly: false, activeSpaceOnly: true) {
             // Don't check items owned by Ice.
-            if item.owningApplication == .current {
+            if item.info.namespace == .ice {
                 continue
             }
             return item.title != nil

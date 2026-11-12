@@ -41,8 +41,8 @@ final class MenuBarItemManager: ObservableObject {
                     return false
                 }
 
-                if item.owningApplication == .current {
-                    // Ice icon is the only item owned by Ice that should be included.
+                if item.info.namespace == .ice {
+                    // Ice icon is the only Ice control item that should be included.
                     guard item.title == ControlItem.Identifier.iceIcon.rawValue else {
                         return false
                     }

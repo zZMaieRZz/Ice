@@ -226,15 +226,21 @@ private extension MenuBarItemInfo {
     /// it is a valid menu bar item window. Only call this initializer if you are
     /// certain that the window is valid.
     init(uncheckedItemWindow itemWindow: WindowInfo) {
-        if let bundleIdentifier = itemWindow.owningApplication?.bundleIdentifier {
-            self.namespace = Namespace(bundleIdentifier)
-        } else {
-            self.namespace = .null
-        }
         if let title = itemWindow.title {
             self.title = title
         } else {
             self.title = ""
+        }
+        // On recent versions of macOS, status item windows are owned by
+        // Control Center rather than by the app that created them. Recognize
+        // Ice's control items by their autosave names so that they continue
+        // to delimit the menu bar sections.
+        if let title = itemWindow.title, ControlItem.Identifier(rawValue: title) != nil {
+            self.namespace = .ice
+        } else if let bundleIdentifier = itemWindow.owningApplication?.bundleIdentifier {
+            self.namespace = Namespace(bundleIdentifier)
+        } else {
+            self.namespace = .null
         }
     }
 }
