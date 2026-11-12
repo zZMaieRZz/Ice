@@ -565,6 +565,9 @@ final class ControlItem {
         menu.addItem(checkForUpdatesItem)
 
         menu.addItem(.separator())
+        menu.addItem(makeLanguageMenuItem())
+
+        menu.addItem(.separator())
 
         let quitItem = NSMenuItem(
             title: "Quit Ice",
@@ -575,6 +578,48 @@ final class ControlItem {
         menu.addItem(quitItem)
 
         return menu
+    }
+
+    /// Creates the submenu that lets the user switch Ice's interface language.
+    private func makeLanguageMenuItem() -> NSMenuItem {
+        let title = String(localized: "Language")
+        let item = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+        let submenu = NSMenu(title: title)
+
+        let systemItem = NSMenuItem(
+            title: String(localized: "System"),
+            action: #selector(changeLanguage(_:)),
+            keyEquivalent: ""
+        )
+        systemItem.target = self
+        systemItem.state = LanguageManager.selectedLanguage == nil ? .on : .off
+        submenu.addItem(systemItem)
+
+        submenu.addItem(.separator())
+
+        for language in AppLanguage.allCases {
+            let languageItem = NSMenuItem(
+                title: language.nativeName,
+                action: #selector(changeLanguage(_:)),
+                keyEquivalent: ""
+            )
+            languageItem.target = self
+            languageItem.representedObject = language.rawValue
+            languageItem.state = LanguageManager.selectedLanguage == language ? .on : .off
+            submenu.addItem(languageItem)
+        }
+
+        item.submenu = submenu
+        return item
+    }
+
+    /// Changes Ice's interface language and relaunches the app.
+    @objc private func changeLanguage(_ sender: NSMenuItem) {
+        let language = (sender.representedObject as? String).flatMap(AppLanguage.init(rawValue:))
+        guard language != LanguageManager.selectedLanguage else {
+            return
+        }
+        LanguageManager.setLanguage(language)
     }
 
     /// Shows the control item's menu.

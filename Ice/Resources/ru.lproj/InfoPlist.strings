@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "Ice";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2025 Jordan Baird";
+
