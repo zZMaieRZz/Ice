@@ -27,27 +27,27 @@ final class MenuBarItemSpacingManager {
         let failedApps: [String]
 
         var errorDescription: String? {
-            "The following applications failed to quit and were not restarted:\n" + failedApps.joined(separator: "\n")
+            String(localized: "The following applications failed to quit and were not restarted:") + "\n" + failedApps.joined(separator: "\n")
         }
 
         var recoverySuggestion: String? {
-            "You may need to log out for the changes to take effect."
+            String(localized: "You may need to log out for the changes to take effect.")
         }
     }
 
     /// Maximum time to wait for an app to quit gracefully.
     private let terminationTimeout: Duration = .seconds(5)
 
-    private enum SpacingError: LocalizedError {
-        case commandFailed(command: String, status: Int32)
+    enum SpacingError: LocalizedError {
+        case defaultsWriteFailed
         case terminationFailed(app: String)
 
         var errorDescription: String? {
             switch self {
-            case let .commandFailed(command, status):
-                "The command \(command) failed with exit status \(status)."
+            case .defaultsWriteFailed:
+                String(localized: "The menu bar spacing settings could not be updated.")
             case let .terminationFailed(app):
-                "The application \(app) did not quit. Quit it manually and try again."
+                String(localized: "The application \(app) did not quit. Quit it manually and try again.")
             }
         }
     }
@@ -56,32 +56,36 @@ final class MenuBarItemSpacingManager {
     /// Does not take effect until ``applyOffset()`` is called.
     var offset = 0
 
-    /// Runs a command with the given arguments.
-    private func runCommand(_ command: String, with arguments: [String]) async throws {
-        let process = Process()
+    /// Returns the current value for the given key, or `nil` if the key is unset.
+    private func currentValue(forKey key: Key) -> Int? {
+        let value = CFPreferencesCopyValue(
+            key.rawValue as CFString,
+            kCFPreferencesAnyApplication,
+            kCFPreferencesCurrentUser,
+            kCFPreferencesCurrentHost
+        )
+        return (value as? NSNumber)?.intValue
+    }
 
-        process.executableURL = URL(filePath: "/usr/bin/defaults")
-        process.arguments = arguments
+    /// Sets the value for the given key, or removes the key if `value` is `nil`.
+    private func setValue(_ value: Int?, forKey key: Key) {
+        let propertyList: CFPropertyList? = value.map { NSNumber(value: $0) as CFPropertyList }
+        CFPreferencesSetValue(
+            key.rawValue as CFString,
+            propertyList,
+            kCFPreferencesAnyApplication,
+            kCFPreferencesCurrentUser,
+            kCFPreferencesCurrentHost
+        )
+    }
 
-        let task = Task.detached {
-            try process.run()
-            process.waitUntilExit()
-            guard process.terminationReason == .exit, process.terminationStatus == 0 else {
-                throw SpacingError.commandFailed(command: command, status: process.terminationStatus)
-            }
+    /// Applies the given values to both spacing keys and synchronizes them to disk.
+    private func setValues(spacing: Int?, padding: Int?) throws {
+        setValue(spacing, forKey: .spacing)
+        setValue(padding, forKey: .padding)
+        guard CFPreferencesAppSynchronize(kCFPreferencesAnyApplication) else {
+            throw SpacingError.defaultsWriteFailed
         }
-
-        return try await task.value
-    }
-
-    /// Removes the value for the specified key.
-    private func removeValue(forKey key: Key) async throws {
-        try await runCommand("defaults", with: ["-currentHost", "delete", "-globalDomain", key.rawValue])
-    }
-
-    /// Sets the value for the specified key to the key's default value plus the given offset.
-    private func setOffset(_ offset: Int, forKey key: Key) async throws {
-        try await runCommand("defaults", with: ["-currentHost", "write", "-globalDomain", key.rawValue, "-int", String(key.defaultValue + offset)])
     }
 
     /// Returns a log string for the given app.
@@ -150,12 +154,17 @@ final class MenuBarItemSpacingManager {
     ///
     /// - Note: Calling this restarts all apps with a menu bar item.
     func applyOffset() async throws {
-        if offset == 0 {
-            try await removeValue(forKey: .spacing)
-            try await removeValue(forKey: .padding)
-        } else {
-            try await setOffset(offset, forKey: .spacing)
-            try await setOffset(offset, forKey: .padding)
+        // Snapshot the current values so they can be restored if writing fails.
+        let currentSpacing = currentValue(forKey: .spacing)
+        let currentPadding = currentValue(forKey: .padding)
+        let proposedSpacing = offset == 0 ? nil : Key.spacing.defaultValue + offset
+        let proposedPadding = offset == 0 ? nil : Key.padding.defaultValue + offset
+
+        do {
+            try setValues(spacing: proposedSpacing, padding: proposedPadding)
+        } catch {
+            try? setValues(spacing: currentSpacing, padding: currentPadding)
+            throw error
         }
 
         try await Task.sleep(for: .milliseconds(100))

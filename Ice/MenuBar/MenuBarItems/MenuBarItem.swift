@@ -68,7 +68,7 @@ struct MenuBarItem {
     /// A name associated with the item that is suited for display to
     /// the user.
     var displayName: String {
-        var fallback: String { "Unknown" }
+        var fallback: String { String(localized: "Unknown") }
         guard let owningApplication else {
             return ownerName ?? title ?? fallback
         }

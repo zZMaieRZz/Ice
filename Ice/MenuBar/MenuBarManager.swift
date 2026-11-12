@@ -28,6 +28,9 @@ final class MenuBarManager: ObservableObject {
     /// Storage for internal observers.
     private var cancellables = Set<AnyCancellable>()
 
+    /// The task that rehides the hidden section when the focused app changes.
+    private var focusedAppRehideTask: Task<Void, Never>?
+
     /// A Boolean value that indicates whether the application menus are hidden.
     private var isHidingApplicationMenus = false
 
@@ -122,12 +125,17 @@ final class MenuBarManager: ObservableObject {
                 if
                     let self,
                     let appState,
+                    appState.settingsManager.generalSettingsManager.autoRehide,
                     case .focusedApp = appState.settingsManager.generalSettingsManager.rehideStrategy,
                     let hiddenSection = section(withName: .hidden),
                     !appState.eventManager.isMouseInsideMenuBar
                 {
-                    Task {
-                        try await Task.sleep(for: .seconds(0.1))
+                    focusedAppRehideTask?.cancel()
+                    focusedAppRehideTask = Task {
+                        try? await Task.sleep(for: .seconds(0.1))
+                        guard !Task.isCancelled else {
+                            return
+                        }
                         hiddenSection.hide()
                     }
                 }

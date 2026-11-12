@@ -1,0 +1,1830 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "(": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "("
+          }
+        }
+      }
+    },
+    ")": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ")"
+          }
+        }
+      }
+    },
+    "%@ Section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раздел «%@»"
+          }
+        }
+      }
+    },
+    "•": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "•"
+          }
+        }
+      }
+    },
+    "1": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1"
+          }
+        }
+      }
+    },
+    "2": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2"
+          }
+        }
+      }
+    },
+    "3": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3"
+          }
+        }
+      }
+    },
+    "Absolutely no personal information is collected or stored.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Личные данные не собираются и не хранятся."
+          }
+        }
+      }
+    },
+    "Acknowledgements": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Благодарности"
+          }
+        }
+      }
+    },
+    "All apps with menu bar items will be relaunched. Some apps may need to be relaunched manually.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Все приложения с элементами строки меню будут перезапущены. Некоторые приложения может потребоваться перезапустить вручную."
+          }
+        }
+      }
+    },
+    "Always-hidden section can be shown": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Постоянно скрытый раздел можно показать"
+          }
+        }
+      }
+    },
+    "Apply": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применить"
+          }
+        }
+      }
+    },
+    "Apply and Relaunch Apps": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применить и перезапустить приложения"
+          }
+        }
+      }
+    },
+    "Apply different settings based on the current system appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применять разные настройки в зависимости от текущей темы системы"
+          }
+        }
+      }
+    },
+    "Apply Menu Bar Item Spacing?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применить расстояние между элементами строки меню?"
+          }
+        }
+      }
+    },
+    "Apply system theme to icon": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применять системную тему к значку"
+          }
+        }
+      }
+    },
+    "Apply the current spacing": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применить текущее расстояние"
+          }
+        }
+      }
+    },
+    "Applying this setting will relaunch all apps with menu bar items. Some apps may need to be manually relaunched.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Применение этой настройки перезапустит все приложения с элементами строки меню. Некоторые приложения может потребоваться перезапустить вручную."
+          }
+        }
+      }
+    },
+    "Automatically check for updates": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически проверять обновления"
+          }
+        }
+      }
+    },
+    "Automatically download updates": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически загружать обновления"
+          }
+        }
+      }
+    },
+    "Automatically rehide": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически скрывать"
+          }
+        }
+      }
+    },
+    "BETA": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "БЕТА"
+          }
+        }
+      }
+    },
+    "between sections": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "между разделами"
+          }
+        }
+      }
+    },
+    "Border": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рамка"
+          }
+        }
+      }
+    },
+    "Border Color": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цвет рамки"
+          }
+        }
+      }
+    },
+    "Border Width": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ширина рамки"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмена"
+          }
+        }
+      }
+    },
+    "Check for Updates": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить обновления"
+          }
+        }
+      }
+    },
+    "Choose a custom icon to show in the menu bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите пользовательский значок для строки меню"
+          }
+        }
+      }
+    },
+    "Choose image…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать изображение…"
+          }
+        }
+      }
+    },
+    "Click inside an empty area of the menu bar to show hidden menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щёлкните по пустой области строки меню, чтобы показать скрытые элементы"
+          }
+        }
+      }
+    },
+    "Click item": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажать элемент"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить"
+          }
+        }
+      }
+    },
+    "Continue in Limited Mode": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить в ограниченном режиме"
+          }
+        }
+      }
+    },
+    "Contribute": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Участвовать"
+          }
+        }
+      }
+    },
+    "Dark Appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тёмный вид"
+          }
+        }
+      }
+    },
+    "default": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "по умолчанию"
+          }
+        }
+      }
+    },
+    "Display the icon as a monochrome image matching the system appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отображать значок как монохромное изображение в соответствии с системной темой"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готово"
+          }
+        }
+      }
+    },
+    "Drag to arrange your menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перетаскивайте элементы строки меню, чтобы упорядочить их"
+          }
+        }
+      }
+    },
+    "Drag to rearrange, or use the Move Left and Move Right actions": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перетаскивайте элементы или используйте действия «Переместить влево» и «Переместить вправо»"
+          }
+        }
+      }
+    },
+    "Dynamic": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Динамически"
+          }
+        }
+      }
+    },
+    "Enable always-hidden section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить постоянно скрытый раздел"
+          }
+        }
+      }
+    },
+    "Enable the Ice Bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить Ice Bar"
+          }
+        }
+      }
+    },
+    "Focused app": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Активное приложение"
+          }
+        }
+      }
+    },
+    "Full": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Полная"
+          }
+        }
+      }
+    },
+    "Go to Advanced Settings": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перейти к дополнительным настройкам"
+          }
+        }
+      }
+    },
+    "Gradient": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Градиент"
+          }
+        }
+      }
+    },
+    "Grant Permission": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предоставить разрешение"
+          }
+        }
+      }
+    },
+    "Hide application menus when showing menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрывать меню приложений при показе элементов строки меню"
+          }
+        }
+      }
+    },
+    "Hold to Preview": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удерживать для предпросмотра"
+          }
+        }
+      }
+    },
+    "Hover over an empty area of the menu bar to show hidden menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наведите указатель на пустую область строки меню, чтобы показать скрытые элементы"
+          }
+        }
+      }
+    },
+    "Ice": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice"
+          }
+        }
+      }
+    },
+    "Ice can work in a limited mode without this permission.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без этого разрешения Ice может работать в ограниченном режиме."
+          }
+        }
+      }
+    },
+    "Ice cannot arrange menu bar items in automatically hidden menu bars": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice не может упорядочивать элементы строки меню при автоматически скрываемой строке меню"
+          }
+        }
+      }
+    },
+    "Ice cannot display menu bar items for automatically hidden menu bars": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice не может отображать элементы строки меню при автоматически скрываемой строке меню"
+          }
+        }
+      }
+    },
+    "Ice cannot edit the appearance of automatically hidden menu bars": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice не может изменять внешний вид автоматически скрываемой строки меню"
+          }
+        }
+      }
+    },
+    "Ice icon": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значок Ice"
+          }
+        }
+      }
+    },
+    "Ice needs permission to manage the menu bar.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice требуется разрешение для управления строкой меню."
+          }
+        }
+      }
+    },
+    "Ice needs this to:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice необходимо это для:"
+          }
+        }
+      }
+    },
+    "Insert divider items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вставить разделители"
+          }
+        }
+      }
+    },
+    "Last checked: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последняя проверка: %@"
+          }
+        }
+      }
+    },
+    "Leading End Cap": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начальный конец"
+          }
+        }
+      }
+    },
+    "left click": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "левый клик"
+          }
+        }
+      }
+    },
+    "Light Appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Светлый вид"
+          }
+        }
+      }
+    },
+    "Location": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Расположение"
+          }
+        }
+      }
+    },
+    "Make more room in the menu bar by hiding the left application menus if needed": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Освобождать место в строке меню, при необходимости скрывая меню приложений слева"
+          }
+        }
+      }
+    },
+    "max": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "макс."
+          }
+        }
+      }
+    },
+    "Menu Bar Appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Внешний вид строки меню"
+          }
+        }
+      }
+    },
+    "Menu bar item spacing": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Расстояние между элементами строки меню"
+          }
+        }
+      }
+    },
+    "Menu Bar Items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Элементы строки меню"
+          }
+        }
+      }
+    },
+    "Menu bar items are rehidden after a fixed amount of time": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Элементы строки меню скрываются через заданное время"
+          }
+        }
+      }
+    },
+    "Menu bar items are rehidden using a smart algorithm": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Элементы строки меню скрываются по умному алгоритму"
+          }
+        }
+      }
+    },
+    "Menu bar items are rehidden when the focused app changes": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Элементы строки меню скрываются при смене активного приложения"
+          }
+        }
+      }
+    },
+    "Menu bar layout requires screen recording permissions": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для раскладки строки меню требуется разрешение на запись экрана"
+          }
+        }
+      }
+    },
+    "Menu Bar Sections": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разделы строки меню"
+          }
+        }
+      }
+    },
+    "Menu Bar Shape": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Форма строки меню"
+          }
+        }
+      }
+    },
+    "Mouse pointer": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Указатель мыши"
+          }
+        }
+      }
+    },
+    "No shape kind selected": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип формы не выбран"
+          }
+        }
+      }
+    },
+    "none": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "нет"
+          }
+        }
+      }
+    },
+    "None": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет"
+          }
+        }
+      }
+    },
+    "Note: You may need to log out and back in for this setting to apply properly.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Примечание: возможно, потребуется выйти из системы и войти снова, чтобы настройка применилась."
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОК"
+          }
+        }
+      }
+    },
+    "Open Ice Settings": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть настройки Ice"
+          }
+        }
+      }
+    },
+    "Open the Ice menu": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть меню Ice"
+          }
+        }
+      }
+    },
+    "Option + click one of Ice's menu bar items to show the section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите Option + клик по одному из элементов Ice в строке меню, чтобы показать раздел"
+          }
+        }
+      }
+    },
+    "Option + click one of Ice's menu bar items, or inside an empty area of the menu bar to show the section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите Option + клик по элементу Ice или по пустой области строки меню, чтобы показать раздел"
+          }
+        }
+      }
+    },
+    "Other": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Другое"
+          }
+        }
+      }
+    },
+    "Permission Granted": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение получено"
+          }
+        }
+      }
+    },
+    "Permissions": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешения"
+          }
+        }
+      }
+    },
+    "Quit": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выйти"
+          }
+        }
+      }
+    },
+    "Quit Ice": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершить Ice"
+          }
+        }
+      }
+    },
+    "Record Hotkey": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записать сочетание"
+          }
+        }
+      }
+    },
+    "Report a Bug": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сообщить об ошибке"
+          }
+        }
+      }
+    },
+    "Reset": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сбросить"
+          }
+        }
+      }
+    },
+    "Reset to the default spacing": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сбросить расстояние до значения по умолчанию"
+          }
+        }
+      }
+    },
+    "right click": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "правый клик"
+          }
+        }
+      }
+    },
+    "Round Cap": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Круглый конец"
+          }
+        }
+      }
+    },
+    "Scroll or swipe in the menu bar to toggle hidden menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прокручивайте или смахивайте в строке меню, чтобы переключать скрытые элементы"
+          }
+        }
+      }
+    },
+    "Search menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поиск элементов строки меню"
+          }
+        }
+      }
+    },
+    "Search menu bar items…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поиск элементов строки меню…"
+          }
+        }
+      }
+    },
+    "Shadow": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тень"
+          }
+        }
+      }
+    },
+    "Shape Kind": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип формы"
+          }
+        }
+      }
+    },
+    "Show all sections when Command + dragging menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать все разделы при перетаскивании элементов строки меню с Command"
+          }
+        }
+      }
+    },
+    "Show context menu on right click": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать контекстное меню по правому клику"
+          }
+        }
+      }
+    },
+    "Show hidden menu bar items in a separate bar below the menu bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать скрытые элементы строки меню в отдельной панели под строкой меню"
+          }
+        }
+      }
+    },
+    "Show Ice icon": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать значок Ice"
+          }
+        }
+      }
+    },
+    "Show item": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать элемент"
+          }
+        }
+      }
+    },
+    "Show on click": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать по клику"
+          }
+        }
+      }
+    },
+    "Show on hover": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать при наведении"
+          }
+        }
+      }
+    },
+    "Show on hover delay": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Задержка показа при наведении"
+          }
+        }
+      }
+    },
+    "Show on scroll": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать при прокрутке"
+          }
+        }
+      }
+    },
+    "Show section dividers": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать разделители разделов"
+          }
+        }
+      }
+    },
+    "Smart": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умная"
+          }
+        }
+      }
+    },
+    "Solid": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сплошной"
+          }
+        }
+      }
+    },
+    "Split": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разделённая"
+          }
+        }
+      }
+    },
+    "Square Cap": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Квадратный конец"
+          }
+        }
+      }
+    },
+    "Strategy": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стратегия"
+          }
+        }
+      }
+    },
+    "Support Ice": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поддержать Ice"
+          }
+        }
+      }
+    },
+    "Temporarily shown item delay": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Задержка скрытия временно показанных элементов"
+          }
+        }
+      }
+    },
+    "The amount of time to wait before hiding temporarily shown menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время ожидания перед скрытием временно показанных элементов строки меню"
+          }
+        }
+      }
+    },
+    "The amount of time to wait before showing on hover": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время ожидания перед показом при наведении"
+          }
+        }
+      }
+    },
+    "The Ice Bar is centered below the Ice icon": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice Bar центрируется под значком Ice"
+          }
+        }
+      }
+    },
+    "The Ice Bar is centered below the mouse pointer": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ice Bar центрируется под указателем мыши"
+          }
+        }
+      }
+    },
+    "The Ice Bar requires screen recording permissions.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для Ice Bar требуется разрешение на запись экрана."
+          }
+        }
+      }
+    },
+    "The Ice Bar's location changes based on context": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Положение Ice Bar зависит от контекста"
+          }
+        }
+      }
+    },
+    "This shortcut is unavailable. Another app may already be using it.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это сочетание недоступно. Возможно, его уже использует другое приложение."
+          }
+        }
+      }
+    },
+    "Timed": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По таймеру"
+          }
+        }
+      }
+    },
+    "Tint": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оттенок"
+          }
+        }
+      }
+    },
+    "Tip: you can also arrange menu bar items by Command + dragging them in the menu bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Совет: элементы строки меню можно также упорядочивать, перетаскивая их с Command"
+          }
+        }
+      }
+    },
+    "Tip: you can also edit these settings by right-clicking in an empty area of the menu bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Совет: эти настройки можно также изменить, щёлкнув правой кнопкой по пустой области строки меню"
+          }
+        }
+      }
+    },
+    "Toggle application menus": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переключить меню приложений"
+          }
+        }
+      }
+    },
+    "Toggle the always-hidden section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переключить постоянно скрытый раздел"
+          }
+        }
+      }
+    },
+    "Toggle the hidden section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переключить скрытый раздел"
+          }
+        }
+      }
+    },
+    "Trailing End Cap": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конечный конец"
+          }
+        }
+      }
+    },
+    "Type Hotkey": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите сочетание"
+          }
+        }
+      }
+    },
+    "Unable to display menu bar items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось отобразить элементы строки меню"
+          }
+        }
+      }
+    },
+    "Unavailable": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недоступно"
+          }
+        }
+      }
+    },
+    "Use dynamic appearance": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использовать динамический вид"
+          }
+        }
+      }
+    },
+    "Use Ice Bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использовать Ice Bar"
+          }
+        }
+      }
+    },
+    "Use inset shape on screens with notch": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использовать вписанную форму на экранах с вырезом"
+          }
+        }
+      }
+    },
+    "Version %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Версия %@"
+          }
+        }
+      }
+    },
+    "You can still access Ice's settings by right-clicking an empty area in the menu bar": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки Ice по-прежнему доступны по правому клику на пустой области строки меню"
+          }
+        }
+      }
+    },
+    "Visible": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видимый"
+          }
+        }
+      }
+    },
+    "Hidden": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрытый"
+          }
+        }
+      }
+    },
+    "Always-Hidden": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Постоянно скрытый"
+          }
+        }
+      }
+    },
+    "Show the %@ section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать раздел «%@»"
+          }
+        }
+      }
+    },
+    "Hide the %@ section": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыть раздел «%@»"
+          }
+        }
+      }
+    },
+    "Ice Settings…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки Ice…"
+          }
+        }
+      }
+    },
+    "Search Menu Bar Items": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поиск элементов строки меню"
+          }
+        }
+      }
+    },
+    "Check for Updates…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить обновления…"
+          }
+        }
+      }
+    },
+    "Accessibility": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Универсальный доступ"
+          }
+        }
+      }
+    },
+    "Screen Recording": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запись экрана"
+          }
+        }
+      }
+    },
+    "Get real-time information about the menu bar.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Получать информацию о строке меню в реальном времени."
+          }
+        }
+      }
+    },
+    "Arrange menu bar items.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упорядочивать элементы строки меню."
+          }
+        }
+      }
+    },
+    "Edit the menu bar's appearance.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменять внешний вид строки меню."
+          }
+        }
+      }
+    },
+    "Display images of individual menu bar items.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отображать изображения отдельных элементов строки меню."
+          }
+        }
+      }
+    },
+    "Unknown": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неизвестно"
+          }
+        }
+      }
+    },
+    "The menu bar spacing settings could not be updated.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось обновить настройки расстояния между элементами строки меню."
+          }
+        }
+      }
+    },
+    "The application %@ did not quit. Quit it manually and try again.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приложение %@ не завершилось. Завершите его вручную и повторите попытку."
+          }
+        }
+      }
+    },
+    "The following applications failed to quit and were not restarted:": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следующие приложения не завершились и не были перезапущены:"
+          }
+        }
+      }
+    },
+    "You may need to log out for the changes to take effect.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Возможно, потребуется выйти из системы, чтобы изменения вступили в силу."
+          }
+        }
+      }
+    },
+    "Hotkey is reserved by macOS": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сочетание зарезервировано macOS"
+          }
+        }
+      }
+    },
+    "Choose a different shortcut.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите другое сочетание."
+          }
+        }
+      }
+    },
+    "Hotkey Unavailable": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сочетание недоступно"
+          }
+        }
+      }
+    },
+    "%@ is already used for \"%@\". Choose a different shortcut.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ уже используется для «%@». Выберите другое сочетание."
+          }
+        }
+      }
+    },
+    "%@ is unavailable. Another app may already be using it.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ недоступно. Возможно, его уже использует другое приложение."
+          }
+        }
+      }
+    },
+    "Arrow": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стрелка"
+          }
+        }
+      }
+    },
+    "Chevron": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шеврон"
+          }
+        }
+      }
+    },
+    "Door": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дверь"
+          }
+        }
+      }
+    },
+    "Dot": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точка"
+          }
+        }
+      }
+    },
+    "Ellipsis": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Многоточие"
+          }
+        }
+      }
+    },
+    "Ice Cube": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ледяной куб"
+          }
+        }
+      }
+    },
+    "Sunglasses": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очки"
+          }
+        }
+      }
+    },
+    "Custom": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Другой"
+          }
+        }
+      }
+    },
+    "Menu bar item is not movable.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Элемент строки меню нельзя переместить."
+          }
+        }
+      }
+    },
+    "macOS prohibits \"%@\" from being moved.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS запрещает перемещать «%@»."
+          }
+        }
+      }
+    },
+    "%@ is unresponsive. Until it is restarted, it cannot be moved. Movement of other menu bar items may also be affected until this is resolved.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ не отвечает. Пока приложение не будет перезапущено, элемент нельзя переместить. Это также может влиять на перемещение других элементов строки меню."
+          }
+        }
+      }
+    },
+    "1 second": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 секунда"
+          }
+        }
+      }
+    },
+    "%lld seconds": {
+      "localizations": {
+        "ru": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld секунда"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld секунды"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld секунд"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld секунды"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -33,8 +33,6 @@ class Permission: ObservableObject, Identifiable {
 
     /// Observer that runs on a timer to check permissions.
     private var timerCancellable: AnyCancellable?
-    /// Observer that observes the ``hasPermission`` property.
-    private var hasPermissionCancellable: AnyCancellable?
 
     /// Creates a permission.
     ///
@@ -85,22 +83,16 @@ class Permission: ObservableObject, Identifiable {
     }
 
     /// Asynchronously waits for the app to be granted this permission.
-    func waitForPermission() async {
+    ///
+    /// - Parameter timeout: The maximum amount of time to wait.
+    func waitForPermission(timeout: Duration = .seconds(60)) async {
         configureCancellables()
         guard !hasPermission else {
             return
         }
-        return await withCheckedContinuation { continuation in
-            hasPermissionCancellable = $hasPermission.sink { [weak self] hasPermission in
-                guard let self else {
-                    continuation.resume()
-                    return
-                }
-                if hasPermission {
-                    hasPermissionCancellable?.cancel()
-                    continuation.resume()
-                }
-            }
+        let deadline = ContinuousClock.now.advanced(by: timeout)
+        while !hasPermission, ContinuousClock.now < deadline, !Task.isCancelled {
+            try? await Task.sleep(for: .milliseconds(200))
         }
     }
 
@@ -108,8 +100,6 @@ class Permission: ObservableObject, Identifiable {
     func stopCheck() {
         timerCancellable?.cancel()
         timerCancellable = nil
-        hasPermissionCancellable?.cancel()
-        hasPermissionCancellable = nil
     }
 }
 
@@ -118,13 +108,13 @@ class Permission: ObservableObject, Identifiable {
 final class AccessibilityPermission: Permission {
     init() {
         super.init(
-            title: "Accessibility",
+            title: String(localized: "Accessibility"),
             details: [
-                "Get real-time information about the menu bar.",
-                "Arrange menu bar items.",
+                String(localized: "Get real-time information about the menu bar."),
+                String(localized: "Arrange menu bar items."),
             ],
             isRequired: true,
-            settingsURL: nil,
+            settingsURL: URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"),
             check: {
                 checkIsProcessTrusted()
             },
@@ -140,10 +130,10 @@ final class AccessibilityPermission: Permission {
 final class ScreenRecordingPermission: Permission {
     init() {
         super.init(
-            title: "Screen Recording",
+            title: String(localized: "Screen Recording"),
             details: [
-                "Edit the menu bar's appearance.",
-                "Display images of individual menu bar items.",
+                String(localized: "Edit the menu bar's appearance."),
+                String(localized: "Display images of individual menu bar items."),
             ],
             isRequired: false,
             settingsURL: URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"),

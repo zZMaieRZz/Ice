@@ -327,6 +327,9 @@ final class ControlItem {
         }
         button.target = self
         button.action = #selector(performAction)
+        button.setAccessibilityLabel(String(localized: "Ice"))
+        button.setAccessibilityHelp(String(localized: "Open the Ice menu"))
+        button.setAccessibilityRole(.menuButton)
     }
 
     /// Updates the appearance of the status item using the given hiding state.
@@ -425,7 +428,7 @@ final class ControlItem {
         let menu = NSMenu(title: "Ice")
 
         let settingsItem = NSMenuItem(
-            title: "Ice Settings…",
+            title: String(localized: "Ice Settings…"),
             action: #selector(AppDelegate.openSettingsWindow),
             keyEquivalent: ","
         )
@@ -435,7 +438,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let searchItem = NSMenuItem(
-            title: "Search Menu Bar Items",
+            title: String(localized: "Search Menu Bar Items"),
             action: #selector(showSearchPanel),
             keyEquivalent: ""
         )
@@ -461,8 +464,13 @@ final class ControlItem {
                 // Section doesn't exist, or is disabled.
                 continue
             }
+            let title = if section.isHidden {
+                String(localized: "Show the \(name.displayString) section")
+            } else {
+                String(localized: "Hide the \(name.displayString) section")
+            }
             let item = NSMenuItem(
-                title: "\(section.isHidden ? "Show" : "Hide") the \(name.displayString) Section",
+                title: title,
                 action: #selector(toggleMenuBarSection),
                 keyEquivalent: ""
             )
@@ -494,7 +502,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let checkForUpdatesItem = NSMenuItem(
-            title: "Check for Updates…",
+            title: String(localized: "Check for Updates…"),
             action: #selector(checkForUpdates),
             keyEquivalent: ""
         )
@@ -504,7 +512,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let quitItem = NSMenuItem(
-            title: "Quit Ice",
+            title: String(localized: "Quit Ice"),
             action: #selector(NSApp.terminate),
             keyEquivalent: "q"
         )

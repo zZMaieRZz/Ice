@@ -43,6 +43,15 @@ final class Hotkey: ObservableObject {
         listener?.invalidate()
         listener = nil
     }
+
+    /// Returns the first other hotkey that is already using the given key
+    /// combination, or `nil` if the combination is free.
+    @MainActor
+    func conflictingHotkey(for keyCombination: KeyCombination) -> Hotkey? {
+        appState?.settingsManager.hotkeySettingsManager.hotkeys.first { hotkey in
+            hotkey !== self && hotkey.keyCombination == keyCombination
+        }
+    }
 }
 
 extension Hotkey {

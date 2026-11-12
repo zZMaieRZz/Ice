@@ -8,11 +8,13 @@ import SwiftUI
 
 @MainActor
 final class HotkeyRecorderModel: ObservableObject {
-    @EnvironmentObject private var appState: AppState
-
     @Published private(set) var isRecording = false
 
-    @Published var isPresentingReservedByMacOSError = false
+    @Published var isPresentingError = false
+
+    @Published private(set) var errorTitle = ""
+
+    @Published private(set) var errorMessage = ""
 
     let hotkey: Hotkey
 
@@ -76,10 +78,44 @@ final class HotkeyRecorderModel: ObservableObject {
             return
         }
         guard !keyCombination.isReservedBySystem else {
-            isPresentingReservedByMacOSError = true
+            presentError(
+                String(localized: "Choose a different shortcut."),
+                title: String(localized: "Hotkey is reserved by macOS")
+            )
             return
         }
+
+        let shortcut = keyCombination.modifiers.symbolicValue + keyCombination.key.stringValue.capitalized
+
+        if let conflictingHotkey = hotkey.conflictingHotkey(for: keyCombination) {
+            presentError(
+                String(localized: "\(shortcut) is already used for \"\(conflictingHotkey.action.displayName)\". Choose a different shortcut.")
+            )
+            return
+        }
+
+        let previousKeyCombination = hotkey.keyCombination
         hotkey.keyCombination = keyCombination
+
+        guard hotkey.isEnabled else {
+            // The system refused the registration. Restore the previous
+            // combination instead of leaving the hotkey in a broken state.
+            hotkey.keyCombination = previousKeyCombination
+            presentError(
+                String(localized: "\(shortcut) is unavailable. Another app may already be using it.")
+            )
+            return
+        }
+
         stopRecording()
+    }
+
+    /// Stops recording and presents an error explaining why the shortcut
+    /// could not be used.
+    private func presentError(_ message: String, title: String = String(localized: "Hotkey Unavailable")) {
+        stopRecording()
+        errorTitle = title
+        errorMessage = message
+        isPresentingError = true
     }
 }

@@ -48,6 +48,7 @@ struct HotkeysSettingsPane: View {
                     Text("Toggle application menus")
                 }
             }
+            .id(action)
         }
     }
 

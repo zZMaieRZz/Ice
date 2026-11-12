@@ -79,6 +79,7 @@ brew install --cask jordanbaird-ice
 
 - [x] Launch at login
 - [x] Automatic updates
+- [x] Russian localization
 - [ ] Menu bar widgets
 
 ## Why does Ice only support macOS 14 and later?

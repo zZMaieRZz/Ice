@@ -300,7 +300,7 @@ extension MenuBarItemManager {
                         let section = cache.section(for: targetItem),
                         let index = cache[section].firstIndex(matching: targetItem.info)
                     {
-                        let clampedIndex = (index - 1).clamped(to: cache[section].startIndex...cache[section].endIndex)
+                        let clampedIndex = (index + 1).clamped(to: cache[section].startIndex...cache[section].endIndex)
                         cache[section].insert(item, at: clampedIndex)
                     }
                 }
@@ -534,27 +534,11 @@ extension MenuBarItemManager {
     /// Waits asynchronously until no modifier keys are pressed.
     ///
     /// - Parameter timeout: Amount of time to wait before throwing an error.
-    func waitForNoModifiersPressed(timeout: Duration? = nil) async throws {
+    func waitForNoModifiersPressed(timeout: Duration? = .seconds(2)) async throws {
         try await waitWithTask(timeout: timeout) {
-            // Return early if no flags are pressed.
-            if NSEvent.modifierFlags.isEmpty {
-                return
-            }
-
-            var cancellable: AnyCancellable?
-
-            await withCheckedContinuation { continuation in
-                cancellable = Publishers.Merge(
-                    UniversalEventMonitor.publisher(for: .flagsChanged),
-                    RunLoopLocalEventMonitor.publisher(for: .flagsChanged, mode: .eventTracking)
-                )
-                .removeDuplicates()
-                .sink { _ in
-                    if NSEvent.modifierFlags.isEmpty {
-                        cancellable?.cancel()
-                        continuation.resume()
-                    }
-                }
+            while !NSEvent.modifierFlags.isEmpty {
+                try Task.checkCancellation()
+                try await Task.sleep(for: .milliseconds(50))
             }
         }
     }
@@ -902,6 +886,8 @@ extension MenuBarItemManager {
                     Logger.itemManager.debug("Menu bar item frame for \(item.logString) has changed to \(NSStringFromRect(currentFrame))")
                     return
                 }
+                // Avoid spinning the main actor while waiting for the window server.
+                try await Task.sleep(for: .milliseconds(10))
             }
         }
         do {
@@ -1153,6 +1139,8 @@ extension MenuBarItemManager {
                 if try await self.itemHasCorrectPosition(item: item, for: destination) {
                     return
                 }
+                // Avoid spinning the main actor while waiting for the window server.
+                try await Task.sleep(for: .milliseconds(10))
             }
         }
         do {

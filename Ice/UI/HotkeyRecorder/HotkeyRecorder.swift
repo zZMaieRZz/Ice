@@ -31,13 +31,12 @@ struct HotkeyRecorder<Label: View>: View {
                     dimension[VerticalAlignment.center]
                 }
         }
-        .alert(
-            "Hotkey is reserved by macOS",
-            isPresented: $model.isPresentingReservedByMacOSError
-        ) {
+        .alert(model.errorTitle, isPresented: $model.isPresentingError) {
             Button("OK") {
-                model.isPresentingReservedByMacOSError = false
+                model.isPresentingError = false
             }
+        } message: {
+            Text(model.errorMessage)
         }
     }
 
@@ -89,7 +88,8 @@ struct HotkeyRecorder<Label: View>: View {
                     Text(keyCombination.key.stringValue.capitalized)
                 }
             } else {
-                Text("ERROR")
+                Text("Unavailable")
+                    .help("This shortcut is unavailable. Another app may already be using it.")
             }
         } else {
             Text("Record Hotkey")

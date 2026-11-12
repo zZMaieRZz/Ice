@@ -272,7 +272,10 @@ extension MigrationManager {
 
     private func migrateAppearanceConfiguration0_11_10() -> MigrationResult {
         guard let oldData = Defaults.data(forKey: .menuBarAppearanceConfiguration) else {
-            return .failureAndLogError(.appearanceConfigurationMigrationError(.missingConfiguration))
+            // A missing configuration is expected on a clean install (and for
+            // users who never used the old appearance settings), not an error.
+            Logger.migration.debug("No legacy menu bar appearance configuration to migrate")
+            return .success
         }
         do {
             let oldConfiguration = try decoder.decode(MenuBarAppearanceConfigurationV1.self, from: oldData)

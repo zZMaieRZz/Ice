@@ -12,6 +12,8 @@ struct GeneralSettingsPane: View {
     @State private var isPresentingError = false
     @State private var presentedError: LocalizedErrorWrapper?
     @State private var isApplyingOffset = false
+    @State private var isPresentingApplyConfirmation = false
+    @State private var isResettingOffset = false
     @State private var tempItemSpacingOffset: CGFloat = 0 // Temporary state for the slider
 
     private var manager: GeneralSettingsManager {
@@ -36,12 +38,10 @@ struct GeneralSettingsPane: View {
     }
 
     private var rehideIntervalKey: LocalizedStringKey {
-        let formatted = manager.rehideInterval.formatted()
         if manager.rehideInterval == 1 {
-            return LocalizedStringKey(formatted + " second")
-        } else {
-            return LocalizedStringKey(formatted + " seconds")
+            return "1 second"
         }
+        return LocalizedStringKey("\(Int(manager.rehideInterval)) seconds")
     }
 
     private var hasSpacingSliderValueChanged: Bool {
@@ -91,7 +91,7 @@ struct GeneralSettingsPane: View {
     @ViewBuilder
     private func menuItem(for imageSet: ControlItemImageSet) -> some View {
         Label {
-            Text(imageSet.name.rawValue)
+            Text(imageSet.name.displayName)
         } icon: {
             if let nsImage = imageSet.hidden.nsImage(for: appState) {
                 switch imageSet.name {
@@ -237,7 +237,8 @@ struct GeneralSettingsPane: View {
         } label: {
             IceLabeledContent {
                 Button("Apply") {
-                    applyOffset()
+                    isResettingOffset = false
+                    isPresentingApplyConfirmation = true
                 }
                 .help("Apply the current spacing")
                 .disabled(isApplyingOffset || !hasSpacingSliderValueChanged)
@@ -249,7 +250,9 @@ struct GeneralSettingsPane: View {
                         .frame(width: 15, height: 15)
                 } else {
                     Button {
-                        resetOffsetToDefault()
+                        isResettingOffset = true
+                        tempItemSpacingOffset = 0
+                        isPresentingApplyConfirmation = true
                     } label: {
                         Image(systemName: "arrow.counterclockwise.circle.fill")
                     }
@@ -280,6 +283,23 @@ struct GeneralSettingsPane: View {
         }
         .onAppear {
             tempItemSpacingOffset = manager.itemSpacingOffset
+        }
+        .confirmationDialog(
+            "Apply Menu Bar Item Spacing?",
+            isPresented: $isPresentingApplyConfirmation
+        ) {
+            Button("Apply and Relaunch Apps", role: .destructive) {
+                isResettingOffset = false
+                applyOffset()
+            }
+            Button("Cancel", role: .cancel) {
+                if isResettingOffset {
+                    tempItemSpacingOffset = manager.itemSpacingOffset
+                }
+                isResettingOffset = false
+            }
+        } message: {
+            Text("All apps with menu bar items will be relaunched. Some apps may need to be relaunched manually.")
         }
     }
 
@@ -324,23 +344,28 @@ struct GeneralSettingsPane: View {
 
     /// Apply menu bar spacing offset.
     private func applyOffset() {
+        guard !isApplyingOffset else {
+            return
+        }
+        let previousOffset = manager.itemSpacingOffset
+        let requestedOffset = tempItemSpacingOffset
         isApplyingOffset = true
-        manager.itemSpacingOffset = tempItemSpacingOffset
+        manager.itemSpacingOffset = requestedOffset
         Task {
             do {
                 try await appState.spacingManager.applyOffset()
             } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
+                // Only the failure to write the defaults leaves the system
+                // unchanged. Relaunch failures are reported, but the new
+                // spacing is already in effect, so the setting is kept.
+                if error is MenuBarItemSpacingManager.SpacingError {
+                    manager.itemSpacingOffset = previousOffset
+                    tempItemSpacingOffset = previousOffset
+                }
+                presentedError = LocalizedErrorWrapper(error)
+                isPresentingError = true
             }
             isApplyingOffset = false
         }
-    }
-
-    /// Reset menu bar spacing offset to default.
-    private func resetOffsetToDefault() {
-        tempItemSpacingOffset = 0
-        manager.itemSpacingOffset = tempItemSpacingOffset
-        applyOffset()
     }
 }

@@ -48,3 +48,23 @@ enum HotkeyAction: String, Codable, CaseIterable {
         }
     }
 }
+
+extension HotkeyAction {
+    /// A human-readable name for the action, suitable for alerts.
+    var displayName: String {
+        switch self {
+        case .toggleHiddenSection:
+            String(localized: "Toggle the hidden section")
+        case .toggleAlwaysHiddenSection:
+            String(localized: "Toggle the always-hidden section")
+        case .searchMenuBarItems:
+            String(localized: "Search menu bar items")
+        case .enableIceBar:
+            String(localized: "Enable the Ice Bar")
+        case .showSectionDividers:
+            String(localized: "Show section dividers")
+        case .toggleApplicationMenus:
+            String(localized: "Toggle application menus")
+        }
+    }
+}

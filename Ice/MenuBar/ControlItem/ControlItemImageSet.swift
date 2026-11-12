@@ -16,6 +16,20 @@ struct ControlItemImageSet: Codable, Hashable, Identifiable {
         case iceCube = "Ice Cube"
         case sunglasses = "Sunglasses"
         case custom = "Custom"
+
+        /// A name to show in the interface.
+        var displayName: String {
+            switch self {
+            case .arrow: String(localized: "Arrow")
+            case .chevron: String(localized: "Chevron")
+            case .door: String(localized: "Door")
+            case .dot: String(localized: "Dot")
+            case .ellipsis: String(localized: "Ellipsis")
+            case .iceCube: String(localized: "Ice Cube")
+            case .sunglasses: String(localized: "Sunglasses")
+            case .custom: String(localized: "Custom")
+            }
+        }
     }
 
     let name: Name

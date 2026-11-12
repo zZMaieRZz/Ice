@@ -224,9 +224,11 @@ final class MenuBarOverlayPanel: NSPanel {
                 guard let self, !flags.isEmpty else {
                     return
                 }
-                Task {
+                Task { @MainActor in
                     // Must be run async, or this will not remove the flags.
-                    self.updateFlags.removeAll()
+                    // Subtract only the flags that were just handled, so that
+                    // updates requested in the meantime are not lost.
+                    self.updateFlags.subtract(flags)
                 }
                 let windows = WindowInfo.getOnScreenWindows()
                 guard let owningDisplay = self.validate(for: .updates, with: windows) else {
@@ -347,7 +349,11 @@ final class MenuBarOverlayPanel: NSPanel {
         updateFlags = [.applicationMenuFrame, .desktopWallpaper]
 
         if !appState.menuBarManager.isMenuBarHiddenBySystem {
-            animator().alphaValue = 1
+            if NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
+                alphaValue = 1
+            } else {
+                animator().alphaValue = 1
+            }
         }
     }
 
@@ -427,10 +433,14 @@ private final class MenuBarOverlayPanelContentView: NSView {
             overlayPanel.$isDraggingMenuBarItem
                 .removeDuplicates()
                 .sink { [weak self] isDragging in
-                    if isDragging {
-                        self?.animator().alphaValue = 0
+                    guard let self else {
+                        return
+                    }
+                    let newAlpha: CGFloat = isDragging ? 0 : 1
+                    if NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
+                        self.alphaValue = newAlpha
                     } else {
-                        self?.animator().alphaValue = 1
+                        self.animator().alphaValue = newAlpha
                     }
                 }
                 .store(in: &c)
