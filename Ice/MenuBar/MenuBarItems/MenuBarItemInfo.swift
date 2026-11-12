@@ -3,6 +3,8 @@
 //  Ice
 //
 
+import CoreGraphics
+
 /// A simplified version of a menu bar item.
 struct MenuBarItemInfo: Hashable, CustomStringConvertible {
     /// The namespace of the item.
@@ -10,6 +12,11 @@ struct MenuBarItemInfo: Hashable, CustomStringConvertible {
 
     /// The title of the item.
     let title: String
+
+    /// A window identifier that distinguishes items whose titles are not
+    /// unique. Control Center hosts several items whose window title is
+    /// just "Item-0"; without this identifier they compare as equal.
+    let windowID: CGWindowID?
 
     /// A Boolean value that indicates whether the item is within the
     /// "Special" namespace.
@@ -22,9 +29,10 @@ struct MenuBarItemInfo: Hashable, CustomStringConvertible {
     }
 
     /// Creates a simplified item with the given namespace and title.
-    init(namespace: Namespace, title: String) {
+    init(namespace: Namespace, title: String, windowID: CGWindowID? = nil) {
         self.namespace = namespace
         self.title = title
+        self.windowID = windowID
     }
 }
 
@@ -126,6 +134,7 @@ extension MenuBarItemInfo: Codable {
                 )
             )
         }
+        self.windowID = nil
     }
 
     func encode(to encoder: any Encoder) throws {

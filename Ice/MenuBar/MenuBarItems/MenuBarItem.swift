@@ -37,6 +37,11 @@ struct MenuBarItem {
 
     /// A Boolean value that indicates whether the item can be moved.
     var isMovable: Bool {
+        // On macOS 26 Control Center hosts these items and ignores synthetic
+        // move events, so attempting to move one only produces a timeout.
+        if info.namespace == .controlCenter, info.title == "Item-0" {
+            return false
+        }
         let immovableItems = Set(MenuBarItemInfo.immovableItems)
         return !immovableItems.contains(info)
     }
@@ -226,21 +231,26 @@ private extension MenuBarItemInfo {
     /// it is a valid menu bar item window. Only call this initializer if you are
     /// certain that the window is valid.
     init(uncheckedItemWindow itemWindow: WindowInfo) {
-        if let title = itemWindow.title {
-            self.title = title
-        } else {
-            self.title = ""
-        }
+        let title = itemWindow.title ?? ""
         // On recent versions of macOS, status item windows are owned by
         // Control Center rather than by the app that created them. Recognize
         // Ice's control items by their autosave names so that they continue
         // to delimit the menu bar sections.
-        if let title = itemWindow.title, ControlItem.Identifier(rawValue: title) != nil {
-            self.namespace = .ice
+        let namespace = if ControlItem.Identifier(rawValue: title) != nil {
+            Namespace.ice
         } else if let bundleIdentifier = itemWindow.owningApplication?.bundleIdentifier {
-            self.namespace = Namespace(bundleIdentifier)
+            Namespace(bundleIdentifier)
         } else {
-            self.namespace = .null
+            Namespace.null
         }
+        // Control Center exposes many items with the title "Item-0". Use the
+        // window identifier so that they remain distinct in caches and when
+        // they are moved.
+        let windowID: CGWindowID? = if namespace == .controlCenter, title == "Item-0" {
+            itemWindow.windowID
+        } else {
+            nil
+        }
+        self.init(namespace: namespace, title: title, windowID: windowID)
     }
 }
