@@ -1,0 +1,82 @@
+name: Release Tahoe RU
+
+on:
+  push:
+    tags:
+      - "v*-tahoe*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-tahoe-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build without signing
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project Ice.xcodeproj \
+            -scheme Ice \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath build \
+            -onlyUsePackageVersionsFromResolvedFile \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Sign ad-hoc
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release/Ice.app"
+          XPC="$APP/Contents/XPCServices/MenuBarItemService.xpc"
+
+          codesign --force --deep --sign - --timestamp=none "$APP"
+          codesign --force --sign - --timestamp=none \
+            --entitlements MenuBarItemService/Resources/MenuBarItemService.entitlements "$XPC"
+          codesign --force --sign - --timestamp=none \
+            --entitlements Ice/Resources/Ice.entitlements "$APP"
+
+          codesign --verify --deep --strict "$APP"
+
+      - name: Package
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release/Ice.app"
+          NAME="Ice-0.11.13-dev.2-tahoe-ru-adhoc"
+
+          mkdir -p dist
+          ditto -c -k --norsrc --noextattr --keepParent "$APP" "dist/$NAME.zip"
+
+          mkdir -p dist/dmg
+          ditto "$APP" "dist/dmg/Ice.app"
+          ln -s /Applications "dist/dmg/Applications"
+          hdiutil create -volname "Ice" -srcfolder "dist/dmg" \
+            -ov -format UDZO "dist/$NAME.dmg"
+
+          cd dist
+          shasum -a 256 "$NAME.zip" "$NAME.dmg" > SHA256SUMS.txt
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Ice 0.11.13-dev.2 Tahoe RU (ad-hoc)"
+          body_path: TAHOE_RELEASE_NOTES.md
+          prerelease: true
+          files: |
+            dist/Ice-0.11.13-dev.2-tahoe-ru-adhoc.zip
+            dist/Ice-0.11.13-dev.2-tahoe-ru-adhoc.dmg
+            dist/SHA256SUMS.txt
+          fail_on_unmatched_files: true
